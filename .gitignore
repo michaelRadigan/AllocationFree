@@ -351,3 +351,6 @@ MigrationBackup/
 
 # Mac specific 
 .DS_Store
+
+# Rider specific
+.idea
