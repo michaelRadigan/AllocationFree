@@ -6,7 +6,11 @@
        Disable analyzers via an MSBuild property settable on the command line. 
     --> 
     <ItemGroup> 
-      <Analyzer Remove="@(Analyzer)" /> 
+      <!-- Beneath would disable all analyzers-->
+      <!--Analyzer Remove="@(Analyzer)" /--> 
+      <!-- Below, we choose to disable specifically the ClrHeapAllocationAnalyzer -->
+      <Analyzer Remove="@(Analyzer)" Condition="'%(Filename)' == 'ClrHeapAllocationAnalyzer'"/>
+      <!--Analyzer Remove="@(ClrHeapAllocationAnalyzer)" /-->
     </ItemGroup> 
   </Target> 
 </Project>
