@@ -1,12 +1,14 @@
+using System.Linq;
+using ClrHeapAllocationAnalyzer;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
-using System.Linq;
 
-namespace ClrHeapAllocationAnalyzer
+namespace AllocationFree.ClrAnalyzers
 {
     public abstract class AllocationAnalyzer : DiagnosticAnalyzer
     {
-        protected abstract SyntaxKind[] Expressions { get; }
+        // TODO[michaelr]: Note that I've changed this to public
+        public abstract SyntaxKind[] Expressions { get; }
 
         protected abstract void AnalyzeNode(SyntaxNodeAnalysisContext context);
 

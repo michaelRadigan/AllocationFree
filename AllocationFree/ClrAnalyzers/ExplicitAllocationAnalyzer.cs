@@ -1,3 +1,5 @@
+using AllocationFree.ClrAnalyzers;
+
 namespace ClrHeapAllocationAnalyzer
 {
     using System;
@@ -10,6 +12,7 @@ namespace ClrHeapAllocationAnalyzer
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public sealed class ExplicitAllocationAnalyzer : AllocationAnalyzer
     {
+        // TODO[michaelr]: Note that the DiagnosticSeverity is defined here!
         public static DiagnosticDescriptor NewArrayRule = new DiagnosticDescriptor("HAA0501", "Explicit new array type allocation", "Explicit new array type allocation", "Performance", DiagnosticSeverity.Info, true);
 
         public static DiagnosticDescriptor NewObjectRule = new DiagnosticDescriptor("HAA0502", "Explicit new reference type allocation", "Explicit new reference type allocation", "Performance", DiagnosticSeverity.Info, true);
@@ -24,7 +27,8 @@ namespace ClrHeapAllocationAnalyzer
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(LetCauseRule, InitializerCreationRule, ImplicitArrayCreationRule, AnonymousNewObjectRule, NewObjectRule, NewArrayRule);
 
-        protected override SyntaxKind[] Expressions => new[]
+        //TODO[michaelr]: Note that I have changed this to public
+        public override SyntaxKind[] Expressions => new[]
         {
             SyntaxKind.ObjectCreationExpression,            // Used
             SyntaxKind.AnonymousObjectCreationExpression,   // Used
