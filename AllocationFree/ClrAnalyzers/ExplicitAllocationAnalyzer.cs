@@ -43,7 +43,7 @@ namespace ClrHeapAllocationAnalyzer
 
         private static readonly object[] EmptyMessageArgs = { };
 
-        protected override void AnalyzeNode(SyntaxNodeAnalysisContext context)
+        public override void AnalyzeNode(SyntaxNodeAnalysisContext context)
         {
             var node = context.Node;
             var semanticModel = context.SemanticModel;

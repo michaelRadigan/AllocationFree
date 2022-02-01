@@ -10,7 +10,7 @@ namespace AllocationFree.ClrAnalyzers
         // TODO[michaelr]: Note that I've changed this to public
         public abstract SyntaxKind[] Expressions { get; }
 
-        protected abstract void AnalyzeNode(SyntaxNodeAnalysisContext context);
+        public abstract void AnalyzeNode(SyntaxNodeAnalysisContext context);
 
         public override void Initialize(AnalysisContext context)
         {
